@@ -1,0 +1,24 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx build parcel index.html",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/react": "^18.3.12",
+    "parcel": "^2.12.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-loading-icons": "^1.1.0",
+    "react-loading-indicators": "^1.0.0",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
