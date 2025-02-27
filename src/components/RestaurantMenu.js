@@ -14,21 +14,25 @@ export const RestaurantMenu = () => {
   
   if (resInfo === null) return <Shimmer />;
 
+  
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
    
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    
+    console.log(itemCards);
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <p>
+    <div >
+      <div className="flex justify-between">
+      <h1 className="font-bold text-4xl p-3 m-3">{name}</h1>
+      <p className="font-bold text-xl m-4 p-4">
         {cuisines.join(" , ")} -{" "}
         {costForTwoMessage}
       </p>
-      <h2>Menu</h2>
+      </div>
+      <h2 className="text-2xl mx-4 px-4 font-extrabold text-blue-900">Menu</h2>
+      
    
       {/* <ul>    
         {itemCards.map(item => <li key={item.card.info.id}>{item.card.info.name}</li>)}
