@@ -24,4 +24,15 @@ const Restaurantcard = (props) => {
   );
 };
 
+export const withOpenLabel = (Restaurantcard) =>{
+  return (props) =>{
+    return (
+      <div>
+        <label className="absolute bg-black text-white font-bold m-2 p-2 rounded-xl">Open</label>
+        <Restaurantcard {...props}/>
+      </div>
+    );
+  };
+};
+
 export default Restaurantcard;

@@ -9,43 +9,34 @@ export const RestaurantMenu = () => {
   const {resId} = useParams();
 
   const resInfo= useRestaurantMenu(resId);
-
-  console.log(resId);
   
   if (resInfo === null) return <Shimmer />;
 
-  
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
    
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    console.log(itemCards);
+    // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR);
+  // console.log(itemCards);
+  
 
+  const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+  // console.log(categories);
   return (
-    <div >
-      <div className="flex justify-between">
-      <h1 className="font-bold text-4xl p-3 m-3">{name}</h1>
-      <p className="font-bold text-xl m-4 p-4">
+    <div className="text-center">
+      
+      <h1 className="font-bold text-3xl p-3 my-3">{name}</h1>
+      <p className="font-bold text-xl mx-4 px-4">
         {cuisines.join(" , ")} -{" "}
         {costForTwoMessage}
       </p>
-      </div>
-      <h2 className="text-2xl mx-4 px-4 font-extrabold text-blue-900">Menu</h2>
-      
-   
-      {/* <ul>    
-        {itemCards.map(item => <li key={item.card.info.id}>{item.card.info.name}</li>)}
-      </ul> */}
-       <p>
-       
-        {itemCards.map((item)=>(
-          <FoodCard key={item.card.info.id} foodData={item.card.info} />
-        ))}
-        </p>
-      
-        
 
+      {/* Categories accordion */}
+      {categories.map((item)=>(
+          <FoodCard key={item.card?.card?.categoryId} foodData={item.card.card} />
+        ))}
+      
     </div>
   );
 };

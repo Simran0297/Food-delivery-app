@@ -1,24 +1,23 @@
 import { FOOD_ITEM_IMG_URL } from "../utils/constants";
+import { ItemListing } from "./ItemListing";
 export const FoodCard =(props) =>{
     const {foodData} = props;
+    // console.log(foodData);
     const {name,price,imageId,category,defaultPrice,isVeg,description} = foodData;
     
     
     return (
-        <div className="m-4 p-4 h-40 bg-gray-100 rounded-4xl hover:bg-gray-400">
-            
-            <div className="flex align-middle">
-                <span className="font-extrabold text-xl px-4 mx-4">{isVeg ? "🟢" : "🔴"} {name} :  {category}</span> 
-                <span className="italic text-red-400  ">{description}</span>
-                <h4 className="font-extrabold text-red-800 text-xl mr-20">Special Price :- Rs. {price/100 || defaultPrice/100}</h4>
-                <img className="w-36 h-36  "src={FOOD_ITEM_IMG_URL + imageId}></img>
-               
-                
+        <div>
+            {/*  Accordion Header */}
+            <div className="w-7/12 bg-gray-200 shadow-xl p-4 mx-auto my-4">
+            <div className="flex justify-between">
+                <span className="font-bold text-lg">{foodData.title}({foodData.itemCards.length})</span>
+                <span>⬇️ </span>
             </div>
-        
-            
-
+        <ItemListing items = {foodData.itemCards}/>
+            </div>
         </div>
     )
-
 }
+
+

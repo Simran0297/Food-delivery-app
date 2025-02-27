@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Restaurantcard from "./RestaurantCard";
+import Restaurantcard, {withOpenLabel} from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { Atom } from "react-loading-indicators";
 import Shimmer from "./Shimmer";
@@ -10,6 +10,8 @@ export const Body = () => {
   const [listofRestaurant, setlistofRestaurant] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  RestaurantcardOpen = withOpenLabel(Restaurantcard);
 
   useEffect(() => {
     fetchData();
@@ -30,6 +32,7 @@ export const Body = () => {
     setFilteredList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    // console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   //conditional rendiring
 
@@ -81,10 +84,12 @@ export const Body = () => {
         </button>
         </div>
       </div>
+      
       <div className="flex flex-wrap">
         {filteredList.map((restaurant) => (
           <Link key={restaurant.info.id}to={"/restaurant/" + restaurant.info.id}>
-          <Restaurantcard  resData={restaurant} />
+          {restaurant.info.isOpen ? (<RestaurantcardOpen resData={restaurant}/>) : (<Restaurantcard  resData={restaurant} />)}
+          
           </Link>
         ))}
       </div>
