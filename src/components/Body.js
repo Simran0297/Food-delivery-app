@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Restaurantcard, {withOpenLabel} from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { Atom } from "react-loading-indicators";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
 
 export const Body = () => {
   const [listofRestaurant, setlistofRestaurant] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  const {loggedInUser ,setUserName} = useContext(UserContext);
+  console.log(setUserName);
   RestaurantcardOpen = withOpenLabel(Restaurantcard);
 
   useEffect(() => {
@@ -36,9 +39,10 @@ export const Body = () => {
   };
   //conditional rendiring
 
+
+
   const onlineStatus = useOnlineStatus();
   if(onlineStatus === false) return <h1>Looks like you are offline!! Check your internet</h1>
-
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
@@ -82,6 +86,10 @@ export const Body = () => {
           {" "}
           Top Rated Restaurants
         </button>
+        </div>
+        <div className="m-2 p-2">
+          <label htmlFor="">Logged in User :  </label>
+          <input type="text" className="p-1 border border-solid border-black rounded-lg " value={loggedInUser} onChange={(event)=>{setUserName(event.target.value)}}/>
         </div>
       </div>
       

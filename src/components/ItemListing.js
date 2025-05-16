@@ -5,7 +5,7 @@ export const ItemListing = ({items}) =>{
     <div>
          <div>
         {items.map((item)=>(
-            <div key = {item.card.info.id} className="p-2 m-2 border-gray-300 border-b-2 text-left flex justify-between">
+            <div key = {item.card.info.id} className="p-2 m-2 border-gray-300 border-b-2 text-left flex justify-between  ">
                
                 <div className="w-9/12">
                 <div className="py-2" >
@@ -15,8 +15,10 @@ export const ItemListing = ({items}) =>{
                 <p className="text-xs">{item.card.info.description}</p>
                 </div>
                 <div className="w-3/12 p-4"> <img className="w-full"src={SWIGGY_URL + item.card.info.imageId}></img>
-                <button className="px-2  bg-gray-100 shadow-lg absolute ml-10 -mt-6 rounded-2xl mx-5">Add+</button> </div>
+                
+                <button className="px-2  bg-gray-100 shadow-lg   ml-10 -mt-6 rounded-2xl mx-5 ">Add+</button> </div>
                 </div>
+                
         ))}
     </div> 
     </div>
