@@ -10,16 +10,26 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.0.8",
     "@types/react": "^18.3.12",
-    "parcel": "^2.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-loading-icons": "^1.1.0",
     "react-loading-indicators": "^1.0.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "babel-jest": "^30.0.2",
+    "jest": "^30.0.3",
+    "jest-environment-jsdom": "^30.0.2",
+    "parcel": "^2.15.4",
     "postcss": "^8.5.3",
     "process": "^0.11.10",
     "tailwindcss": "^4.0.8"

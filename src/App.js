@@ -8,10 +8,14 @@ import { Contact } from "./components/Contact";
 import { Error } from "./components/Error";
 import { RestaurantMenu } from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
+
 const Applayout = () => {
   const [userName , setUserName] = useState();
   useEffect(()=>{
-    //authentication
+    //authentication logic
     const data = {name : "Simran Arora"}
     setUserName(data.name);
   },[]);
@@ -19,12 +23,14 @@ const Applayout = () => {
 
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value = {{loggedInUser: userName,setUserName}}>
     <div className="app">
       <Header />
       <Outlet />
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -50,6 +56,10 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
       },
+      {
+        path:"/cart",
+        element:<Cart/>
+      }
     ],
   },
 ]);
